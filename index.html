@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="manifest" href="manifest.json">
+    
+    <title>Yusuf Nadir Uzun | JS WORK</title>
+</head>
+<style>
+    
+    body{
+            padding: 100px;
+    }
+
+    @media screen and (max-width: 992px) {
+        body{
+            padding: 10px;
+        }
+    }
+    
+
+    li{
+        background: white;   
+        font-weight: 600;
+        list-style-type: none;
+        text-align: center;
+        margin-top: 5px;
+    }
+
+    a li{
+        color: orange;
+        font-size: large;
+    }
+
+    li:hover{
+        background: blue;
+        transition: all 0.5s;
+    }
+</style>
+<body>
+    <h1 style="text-align: center;">Yusuf Nadir Uzun</h1>
+    <h4 style="text-align: center;"><a href="https://github.com/AhmetHuseyinDOK/JS_CLASS">my github repo</a><h6>
+    <ul id=links></ul>
+</body>
+
+    <script>
+        let data = [            
+            {
+                name:'CW8 - SubytleCrypto',
+                link:'https://ahmethuseyindok.github.io/JS_CLASS/cw8/'
+            },
+            {
+                name: 'CW7 - Remote URL or Local File', 
+                link: 'https://ahmethuseyindok.github.io/JS_CLASS/cw7/index.html'
+            },
+            {
+                name:'CW6 - Callback and Promise',
+                link: 'https://ahmethuseyindok.github.io/JS_CLASS/cw6/index.html'
+            },
+            {
+                name: 'CW5 - Classes and Maps',
+                link: 'https://ahmethuseyindok.github.io/JS_CLASS/week6/'
+            },
+            {
+                name: 'CW4 - Object Inspector',
+                link: 'https://ahmethuseyindok.github.io/JS_CLASS/week5'
+            },
+            {
+                name: 'CW3 - Text to objects',
+                link: 'https://ahmethuseyindok.github.io/JS_CLASS/Converter.html'
+            },
+            {
+                name: 'CW2 - Objects and Array',
+                link: 'https://ahmethuseyindok.github.io/JS_CLASS/Counting.html'
+            },
+            {
+                name: 'CW1 - Browser tools',
+                link: 'https://ahmethuseyindok.github.io/JS_CLASS/Counting.html'
+            },
+            {
+                name: 'HW1 - Math TABLE',
+                link: 'https://ahmethuseyindok.github.io/JS_CLASS/hw1/index.html'
+            },
+            {
+                name: 'HW2 - Organize our private repo',
+                link: 'https://ahmethuseyindok.github.io/JS_CLASS/hw2/index.html'
+            },
+
+        ]
+
+        links.innerHTML = data.map((link) => `<a href='${link.link}'><li> ${link.name}</li></a>`).join("");
+    </script>
+<script>navigator.serviceWorker.register('sw.js')</script>
+</html>
