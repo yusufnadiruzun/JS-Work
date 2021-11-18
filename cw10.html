@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="https://blm-fsmvu.github.io/305/images/icon192.png">
+    <title>Battery status </title>
+
+  <style> /* CSS comment */
+    body { max-width: 440px; }
+    #url { width: 190px; }
+    span, #url { color: blue; }
+    p {
+        font-size: large;
+        font-weight: 800;
+    }
+  </style>
+</head>
+
+<body>   <!-- HTML comment: Modify all items marked xxx -->
+
+<h2 id=title title="Put your name here"></h2>
+<p title="navigator.platform">
+  Discarcing...  <span id=plat></span>
+</p>
+<p title="Battery level (integer)">
+  Online Status <span id=lev></span>
+</p>
+<p title="Latitude/Longitude (4 digits)">
+  Keyboard <span id=loc></span>
+</p>
+
+
+<pre id=sample>This text is not shown. Why?</pre>
+
+
+<script>
+"use strict";
+function init() {
+//complete the code below
+    navigator.getBattery().then(b => plat.innerText = b.level*100 +" "+ b.charging)
+
+    window.ononline = x =>  lev.innerText = x.type;
+    
+    window.onkeyup = onoffline;
+    window.onkeyup = e => loc.innerText = e.key;
+    check()
+}
+ 
+
+function check() {
+//complete the code below
+    fetch(url.value).then(r => 
+      resp.innerText = r.ok? 'OK' : 'xxx'
+    ).catch(e => 
+      resp.innerText = 'err'
+    )
+}
+    title.innerText = document.title;
+    sample.innerText = "";
+    init();
+</script>
+
+</body>
+</html>
