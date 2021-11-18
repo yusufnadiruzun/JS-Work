@@ -38,47 +38,71 @@
         background: blue;
         transition: all 0.5s;
     }
+   
 </style>
 <body>
     <h1 style="text-align: center;">Yusuf Nadir Uzun</h1>
     <h4 style="text-align: center;"><a href="https://github.com/yusufnadiruzun/yusuf-nadir-uzun">my github repo</a><h6>
-    <ul id=links></ul>
+    <ul style=" text-align: center; margin-top: 20px;font-weight:600; font-size: large;" id=links></ul>
+    <ul style="text-align: center; margin-top: 20px; font-weight:600; font-size: large;" id=links2>  HomeWorks</ul>
 </body>
 
     <script>
-        let data = [            
+        let data = [         
+            
             {
-                name:'CW8 - SubytleCrypto',
-                link:'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/cw7.html'
-            },
-            {
-                name: 'CW7 - Remote URL or Local File', 
-                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/cw8.html'
-            },
-            {
-                name:'CW6 - Callback and Promise',
-                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/cw6.html'
-            },
-            {
-                name: 'CW5 - Classes and Maps',
-                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/week4/chap4.html'
-            },
-            {
-                name: 'CW4 - Object Inspector',
-                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/week4/chap4.html'
-            },
-            {
-                name: 'CW3 - Text to objects',
-                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/week3_2/index.html'
+                name: 'CW1 - Browser tools',
+                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/Counting.html'
             },
             {
                 name: 'CW2 - Objects and Array',
                 link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/week3/index.html'
             },
             {
-                name: 'CW1 - Browser tools',
-                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/Counting.html'
+                name: 'CW3 - Text to objects',
+                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/week3_2/index.html'
             },
+            {
+                name: 'CW4 - Object Inspector',
+                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/week4/chap4.html'
+            },
+            {
+                name: 'CW5 - Classes and Maps',
+                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/week4/chap4.html'
+            },
+            {
+                name:'CW6 - Callback and Promise',
+                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/cw6.html'
+            },
+            {
+                name: 'CW7 - Remote URL or Local File', 
+                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/cw7.html'
+            },
+
+            {
+                name:'CW8 - SubytleCrypto',
+                link:'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/cw8.html'
+            },
+            {
+                name:'CW9 - Improve your private repo',
+                link:'https://yusufnadiruzun.github.io/yusuf-nadir-uzun.html'
+            },
+            {
+                name:'CW10 - Event listeners',
+                link:'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/cw10.html'
+            },
+        
+        ]
+        links.innerHTML = data.map((link) => `<a href='${link.link}'><li> ${link.name}</li></a>`).join("");
+        </script>
+        
+        
+       
+        
+        
+        <script>
+            let afterData= [
+            
             {
                 name: 'HW1 - Math TABLE',
                 link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/week3/index.html'
@@ -87,10 +111,13 @@
                 name: 'HW2 - Organize our private repo',
                 link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/'
             },
+            
 
         ]
-
-        links.innerHTML = data.map((link) => `<a href='${link.link}'><li> ${link.name}</li></a>`).join("");
+    
+        links2.innerHTML += afterData.map((link) => `<a href='${link.link}'><li> ${link.name}</li></a>`).join("");
     </script>
+  
 <script>navigator.serviceWorker.register('sw.js')</script>
+
 </html>
