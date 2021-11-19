@@ -44,18 +44,10 @@ function init() {
     
     window.onkeyup = onoffline;
     window.onkeyup = e => loc.innerText = e.key;
-    check()
+    
 }
  
 
-function check() {
-//complete the code below
-    fetch(url.value).then(r => 
-      resp.innerText = r.ok? 'OK' : 'xxx'
-    ).catch(e => 
-      resp.innerText = 'err'
-    )
-}
     title.innerText = document.title;
     sample.innerText = "";
     init();
