@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://blm305.github.io/2021/work/GitHub_Users.html -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width">
+ 
+  <title>GitHub Users</title>
+  <style>
+    body {
+        max-width: 300px;
+        padding-top: 40px;
+        padding-left: 40px;
+    }
+    img {
+
+        border: 1px solid gray;
+    }
+    pre { overflow-x: auto; }
+    #out { color: black; }
+    
+  </style>
+</head>
+<body>
+
+    
+<h2 id="title">GitHub Users</h2>
+<input type="text" id="usr" value="" onchange="readUser()">
+<p id="out" ><img src=  "" width="50px" height="50px"> </p>
+
+<p id="loginName" style="width: 5px;"></p> 
+<p id="Name" style="width: 5px;"></p>
+
+
+<p id="uni">   <img src="images/company.png" width="15px"> </p>
+<p id="sehir"> <img src="images/location.png" width="15px"></p> 
+<p id="mail"> <img src="images/mail.png" width="15px"> </p>
+<p id="github"><img src="images/GitHub-Mark.png" width="15px">
+
+
+<script>
+"use strict";
+function error(e) {
+    out.innerText = e
+    out.style.color = 'red'
+    console.error(e)
+}
+function cause(s) {
+  switch (s) {
+    case 403:
+      return 'Rate limit exceeded'
+    case 404:
+      return usr.value+' not found'
+    default:
+      return 'Status '+s
+  }
+}
+async function toJSON(url) {
+  try {
+    let r = await fetch(url)
+    if (!r.ok) throw cause(r.status)
+    return r.json()
+  } catch (e) {
+    error(e)
+  }
+}
+async function readUser() {
+    const URL = "https://api.github.com/users/"
+    const BR = '<BR>'
+    let u = await toJSON(URL+usr.value)
+    if (!u || !u.login) return
+    out.style.color = ''
+    //start with avatar
+    out.innerHTML = `<img src="${u.avatar_url}">`
+    //add name and location
+    let s = (u.name || u.login)
+    if (u.location) s += ', '+u.location;
+    loginName.innerHTML+= u.name;
+    Name.innerHTML += u.login;
+    //add link to GitHub
+    let h = "github.com/"+u.login
+    github.innerHTML += h;
+    `<a href="https://${h}" target=NewTab>${h}</a>`
+    //add repo count and repo names
+    
+    uni.innerHTML += u.company;
+    sehir.innerHTML += u.location;
+    mail.innerHTML += u.email;
+    github.innerHTML += u.blog;
+}
+    title.innerText = document.title
+    
+    readUser()
+</script>
+
+
+
+
+</body></html>
