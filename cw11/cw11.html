@@ -24,7 +24,7 @@
 
     
 <h2 id="title">GitHub Users</h2>
-<input type="text" id="usr" value="" onchange="readUser()">
+<input type="text" id="usr" value="yusufnadiruzun" onchange="readUser()">
 <p id="out" ><img src=  "" width="50px" height="50px"> </p>
 
 <p id="loginName" style="width: 5px;"></p> 
@@ -35,7 +35,10 @@
 <p id="sehir"> <img src="images/location.png" width="15px"></p> 
 <p id="mail"> <img src="images/mail.png" width="15px"> </p>
 <p id="github"><img src="images/GitHub-Mark.png" width="15px">
-
+  <hr>
+  <br>
+  <b>Sample code</b>
+  <pre id=sample></pre>
 
 <script>
 "use strict";
@@ -71,28 +74,22 @@ async function readUser() {
     out.style.color = ''
     //start with avatar
     out.innerHTML = `<img src="${u.avatar_url}">`
+
     //add name and location
-    let s = (u.name || u.login)
-    if (u.location) s += ', '+u.location;
-    loginName.innerHTML+= u.name;
-    Name.innerHTML += u.login;
-    //add link to GitHub
-    let h = "github.com/"+u.login
-    github.innerHTML += h;
-    `<a href="https://${h}" target=NewTab>${h}</a>`
-    //add repo count and repo names
-    
-    uni.innerHTML += u.company;
-    sehir.innerHTML += u.location;
-    mail.innerHTML += u.email;
-    github.innerHTML += u.blog;
+    let n = u.name ? Name.innerHTML = u.name: "Adı: Belirtilmemiş ";
+    let l = u.login ? loginName.innerHTML = u.login: "Kullanıcı adı : Belirtilmemiş ";
+    let c = u.company ? uni.innerHTML += u.company : "Company Belirtilmemiş"
+    let loca = u.location ? sehir.innerHTML += u.location: " Location Belirtilmemiş";
+    let mail = u.email ? mail.innerHTML += u.mail: "Mail Belirtilmemiş "
+    let space = BR+BR+BR+BR+BR+BR+BR+BR+BR+BR+BR+BR;
+
+     //add link to GitHub 
+    let h = "https://"+u.login+".github.io/"
+    github.innerHTML = 
+    `<a href="${h}" target=NewTab>${h}</a>`
 }
     title.innerText = document.title
-    
+    sample.innerText = toJSON +'\n'+ readUser
     readUser()
 </script>
-
-
-
-
 </body></html>
