@@ -51,7 +51,7 @@ function  shaFromBuffer(buf) { //ArrayBuffer or ArrayBufferView
       .then(x=> console.log([...new Uint8Array(x)].map(toHex).join('')))
   } 
   function shaFromFile(f) { //File or Blob
-    const txt = " ";
+    const txt = "";
     console.assert(f instanceof Blob)
     RDR.readAsText(f);
     RDR.onload = () => txt = RDR.result;
