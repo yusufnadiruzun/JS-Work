@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
+<!-- saved from url=(0088)https://burakgulsen.github.io/2021-Advance-Programming/ClassWorks/CW-8/subtleCrypto.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width">
-    <title>Remote URL or Local file </title>
+    <title>SubtleCrypto </title>
 
 <style>
   body { max-width: 500px; }
@@ -25,47 +25,70 @@
 </head>
 
 <body>
-<h2 id=title></h2>
+<h2 id="title">SubtleCrypto</h2>
 
 <div>
   URL: 
-  <input type=text id=remote onchange='displayURL(this.value)'> <br>
-  <input type=file id=button onChange='displayBlob(this.files[0])'>
+  <input type="text" id="remote" onchange="displayURL(this.value)"> <br>
+  <input type="file" id="button" onchange="displayBlob(this.files[0])">
 </div>
-<div id=msg>Select text or image </div>
-<pre id=disp1></pre> <img id=disp2 />
+
 
 <hr>
 <b>Sample code</b>
-<pre id=sample></pre>
+<pre id="sample">function shaFromBuffer(buf) { <br>    let toHex = b=&gt;b.toString(16).padStart(2,'0');<br>    crypto.subtle.digest('SHA-1', new TextEncoder().encode(buf))<br>      .then(x=&gt; console.log([...new Uint8Array(x)].map(toHex).join('')))<br>  }<br>function shaFromFile(f) { <br>    console.assert(f instanceof Blob)<br>    const message = "";<br>    if (f.type.startsWith("text")) {<br>      RDR.readAsText(message);<br>      RDR.onload = () =&gt; message = RDR.result;<br>    }<br><br>    f.arrayBuffer.then(shaFromBuffer(message)).catch(console.error);<br>  }<br>function shaFromURL(u) { <br>    fetch(u).then(r =&gt; r.blob) <br>            .then(shaFromBuffer)<br>            .catch(console.error)<br>  }</pre>
 <hr>
-<p>Ref: <a href="Reading_files">Reading files</a>
+<p>Ref: <a href="https://yusufnadiruzun.github.io/2021-Advance-Programming/ClassWorks/cw8.html">Reading files</a>
  </p>
 
 <script>
 "use strict";
 const RDR = new FileReader();
-function  shaFromBuffer(buf) { //ArrayBuffer or ArrayBufferView
+function displayURL(u) {
+    fetch(u).then(r => r.blob) 
+            .then(displayBlob)
+            .catch(console.error)
+}
+function displayBlob(f) {
+    console.assert(f instanceof Blob)
+    msg.innerText = f.size+" bytes "+f.type
+    disp1.innerText = ""; disp2.src = ""
+    if (f.type.startsWith("image")) {
+        RDR.readAsDataURL(f); //display image
+        RDR.onload = () => disp2.src = RDR.result;
+    } else if (f.type.startsWith("text")) {
+        RDR.readAsText(f);  //display text
+        RDR.onload = () => disp1.innerText = RDR.result;
+    } else {
+        msg.innerText += " -- Unknown"
+    }
+}
+
+function shaFromBuffer(buf) { 
     let toHex = b=>b.toString(16).padStart(2,'0');
     crypto.subtle.digest('SHA-1', new TextEncoder().encode(buf))
       .then(x=> console.log([...new Uint8Array(x)].map(toHex).join('')))
   } 
-  function shaFromFile(f) { //File or Blob
-    const txt = "";
+  function shaFromFile(f) { 
     console.assert(f instanceof Blob)
-    RDR.readAsText(f);
-    RDR.onload = () => txt = RDR.result;
-    f.arrayBuffer()
-      .then(shaFromBuffer(txt))
+    const message = "";
+    if (f.type.startsWith("text")) {
+      RDR.readAsText(message);
+      RDR.onload = () => message = RDR.result;
+    }
+
+    f.arrayBuffer.then(shaFromBuffer(message)).catch(console.error);
   }
-  function shaFromURL(u) { //URL or string
-    fetch(u).then(r => r.arrayBuffer())
-      .then(shaFromBuffer)
+  function shaFromURL(u) { 
+    fetch(u).then(r => r.blob) 
+            .then(shaFromBuffer)
+            .catch(console.error)
   }
 
 title.innerText = document.title
-sample.innerText =shaFromBuffer+'\n'+ shaFromFile + '\n' + shaFromURL
+sample.innerText = shaFromBuffer + '\n'+ shaFromFile + '\n'+ shaFromURL
 </script>
 
-</body>
-</html>
+
+
+</body></html>
