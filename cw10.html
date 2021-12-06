@@ -29,27 +29,22 @@
 <p title="Latitude/Longitude (4 digits)">
   Keyboard <span id=loc></span>
 </p>
-
-
-<pre id=sample>This text is not shown. Why?</pre>
-
+<hr>
+<b>Sample code</b>
+<pre id=sample></pre>
 
 <script>
 "use strict";
 function init() {
 //complete the code below
     navigator.getBattery().then(b => plat.innerText = b.level*100 +" "+ b.charging)
-
     window.ononline = x =>  lev.innerText = x.type;
-    
     window.onkeyup = onoffline;
     window.onkeyup = e => loc.innerText = e.key;
     
 }
- 
-
     title.innerText = document.title;
-    sample.innerText = "";
+    sample.innerText = "" + init;
     init();
 </script>
 
