@@ -38,7 +38,7 @@
 <b>Sample code</b>
 <pre id="sample">function shaFromBuffer(buf) { <br>    let toHex = b=&gt;b.toString(16).padStart(2,'0');<br>    crypto.subtle.digest('SHA-1', new TextEncoder().encode(buf))<br>      .then(x=&gt; console.log([...new Uint8Array(x)].map(toHex).join('')))<br>  }<br>function shaFromFile(f) { <br>    console.assert(f instanceof Blob)<br>    const message = "";<br>    if (f.type.startsWith("text")) {<br>      RDR.readAsText(message);<br>      RDR.onload = () =&gt; message = RDR.result;<br>    }<br><br>    f.arrayBuffer.then(shaFromBuffer(message)).catch(console.error);<br>  }<br>function shaFromURL(u) { <br>    fetch(u).then(r =&gt; r.blob) <br>            .then(shaFromBuffer)<br>            .catch(console.error)<br>  }</pre>
 <hr>
-<p>Ref: <a href="https://yusufnadiruzun.github.io/2021-Advance-Programming/ClassWorks/cw8.html">Reading files</a>
+<p>Ref: <a href="https://yusufnadiruzun.github.io/yusuf-nadir-uzun/cw8.html">Reading files</a>
  </p>
 
 <script>
