@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://blm305.github.io/2020/anim/Animation -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      
+      <meta name="viewport" content="width=device-width">
+      <meta name="author" content="M A Eyler, Istanbul, 2020">
+      <link rel="icon" href="https://blm305.github.io/2020/images/icon192.png">
+      <title>Animation</title>
+      
+    <style>
+    body {
+        max-width: 400px;
+    }
+
+    pre {
+        overflow-x: auto;
+    }
+     #container {
+    width: 450px;
+    height: 450px;
+    position: relative;
+    background: turquoise;
+    }
+    #animate {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    }
+
+      </style>
+  </head>
+
+  <body>
+      
+      <span id="out" title="bird" style="font-size: 25px;">JS Animations</span>
+      <br><br>
+
+      <div id="container" style=" position: relative; ">
+          <img id="animate" src="pngfind.com-ocean-png-1822785.png" style="left: 15px; top: 15px;"></img></div>
+            <hr>
+            <p>SampleCode</p>
+           <pre id="sampleCode"></pre>
+          <script>
+
+
+          function Move() {
+            const elem = document.getElementById("animate");
+            let x = 0;
+            let y = 0;
+            var time = setInterval(frame, 10);
+            function frame() {
+                elem.style.left = x + "px";
+                elem.style.top = y + "px";
+                if(x < 400 && y < 400){
+                    x++;
+                    y++;
+                }
+                else if (x === 400 && y === 400) {
+                let a = setInterval(function (){
+                if(x > 0){
+                    x--;
+                }
+
+                if(x === 0 && y === 400){
+                     let b = setInterval(() =>{
+
+                    if(x < 400 && y > 0){
+                        y--;
+                         x++;
+                        if(x === 400 && y === 0 ){
+                             let c = setInterval( () => {
+                            if(x > 0){
+                                x--;
+                                if(x === 0 && y === 0){
+                                 clearInterval(c);
+                                clearInterval(b);
+                                clearInterval(a);
+                                clearInterval(time);
+                                    }
+                                    }
+                                    },10)
+                                    }
+                                }
+
+                            },10)
+                        }
+
+                    },10)
+                    
+            }
+                
+            }
+        }
+        Move();
+    
+        sampleCode.innerText = Move;
+    </script>
+
+
+
+</body></html>
