@@ -45,7 +45,7 @@
 <pre id=sample></pre>
 
 <div>
-  Lat/Lon <input id=mahal type=text value="41 29">
+  Lat/Lon <input id=mahal type=text value="41.04, 28.95">
 </div>
 
 <div id=main>
@@ -72,18 +72,67 @@
 <canvas id="myCanvas" width="400" height="100" style="border:1px solid #000000;"></canvas>
 <br>
 <b>Sample code</b>
-<pre id=sample></pre>
-var c = document.getElementById("myCanvas");
-c.style.background = "yellow";
-var ctx = c.getContext("2d");
-ctx.font = "30px Arial";
-ctx.fillText(values,10,50,350);
+<pre id=sample>
 
+var c = document.getElementById("myCanvas");
+
+var accessKey;
+async function askWeather() {
+    console.log(lat, lon); 
+    const U = "https://api.openweathermap.org/data/2.5/weather?"
+    let url = U+"lat="+lat+"&lon="+lon+"&APPID="+accessKey;
+    hava.innerText = "getting weather"
+    detay.innerText = ''
+    gunes.innerText = ''
+    let data = await toJSON(url)
+//  fetch(url).then(r => r.json()).then(showWeather)
+// }
+// function showWeather(data) {
+    let w = data.weather[0]; showIcon(w.icon);
+    let celsius = convert(data.main.temp).toFixed(0);
+    // ctx.fillText(w.main,10,50);
+    let hh = w.main+"  "+celsius+"°", {sys} = data
+    let yy = data.name+', '+sys.country
+    hava.innerText = hh; yer.innerText = yy
+    lat = data.coord.lat; lon = data.coord.lon
+    mahal.value = lat.toFixed(2)+", "+lon.toFixed(2)
+    let wind = (3.6*data.wind.speed).toFixed(0)
+    let pres = (0.750062*data.main.pressure).toFixed(0)
+    const WIND = ['N','NE','E','SE','S','SW','W','NW','N']
+    let d = (data.wind.deg/45).toFixed(0)
+    detay.innerText = hh  //+'\n'+yy +'\n['+mahal.value+"]"
+        +'\nWind  '+wind+' km/h '+WIND[d]
+        +'\nPressure  '+pres+' mm'
+        +'\nHumidity  %'+data.main.humidity
+    let values = hh  //+'\n'+yy +'\n['+mahal.value+"]"
+        +'\nWind  '+wind+' km/h '+WIND[d]
+        +'\nPressure  '+pres+' mm'
+        +'\nHumidity  %'+data.main.humidity;
+    
+       
+        c.style.background = "yellow";
+        var ctx = c.getContext("2d");
+        ctx.font = "30px Arial";
+        ctx.fillText(values,10,50,350);
+
+
+    let {sunrise, sunset} = sys, noon = (sunrise+sunset)/2
+    gunes.innerText = 'Rise '+toHM(sunrise+data.timezone)
+        +'\nNoon '+toHM(noon+data.timezone)
+        +'\nSet  '+toHM(sunset+data.timezone)
+        +'\nZone '+(data.timezone/3600)
+    console.log(hh, yy, 'Wind '+data.wind.deg+'° '+WIND[d])
+}
+</pre>
 <script>
+
+
 "use strict";
  
-
 var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.font = "30px Arial";
+ 
 
 
 function toHM(t) { // t in seconds -- convert to minutes
@@ -124,10 +173,13 @@ function getLocation1(p) { //Accurate
 }
 // Weather
 var accessKey;
+
 async function askWeather() {
     console.log(lat, lon); 
     const U = "https://api.openweathermap.org/data/2.5/weather?"
-    let url = U+"lat="+lat+"&lon="+lon+"&APPID="+accessKey;
+    let url = U+"lat="+lat+"&lon="+lon+"&APPID="+"1e198835246bf67f6fdee02ed5f4786e"
+
+;
     hava.innerText = "getting weather"
     detay.innerText = ''
     gunes.innerText = ''
@@ -215,7 +267,9 @@ mahal.onkeyup = e => {
   if (e.keyCode === 27) t.blur()
 }
 
+sample.innerText = askWeather;
 </script>
 
-</body>
-</html>
+
+
+</body></html>
