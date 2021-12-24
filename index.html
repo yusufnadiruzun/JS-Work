@@ -43,8 +43,10 @@
 <body>
     <h1 style="text-align: center;">Yusuf Nadir Uzun</h1>
     <p><img src="" alt=""></p>
-    <ul style=" text-align: center; margin-top: 20px;font-weight:600; font-size: large;" id=links> ClassWork</ul>
+    <ul style="text-align: center; margin-top: 20px; font-weight:600; font-size: large;">Class Works</ul>
+    <ul style=" text-align: center; margin-top: 20px;font-weight:600; font-size: large;" id=links> </ul>
     <ul style="text-align: center; margin-top: 20px; font-weight:600; font-size: large;" id=links2>  HomeWorks</ul>
+    <ul style="text-align: center; margin-top: 20px; font-weight:600; font-size: large;" id=links3> Term Project</ul>
 </body>
 
     <script>
@@ -74,8 +76,6 @@
                 name:'CW6 - Callback and Promise',
                 link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/cw6.html'
             },
-            
-
             {
                 name:'CW7 - Remote URL or Local File',
                 link:'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/cw7.html'
@@ -111,20 +111,13 @@
             {
                 name:'CW15 - Google Drive Api',
                 link:'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/'
-            },
-        
-        
+            },  
         ]
+
         links.innerHTML = data.map((link) => `<a href='${link.link}'><li> ${link.name}</li></a>`).join("");
         </script>
-        
-        
-       
-        
-        
         <script>
             let afterData= [
-            
             {
                 name: 'HW1 - Math TABLE',
                 link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/week3/index.html'
@@ -139,13 +132,22 @@
             },
             {
                 name: 'HW4 - Term Project Proposal',
-                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/HW3/index.html'
-            }
-            
-
+                link: 'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/HW4/index.html'
+            },
         ]
     
         links2.innerHTML += afterData.map((link) => `<a href='${link.link}'><li> ${link.name}</li></a>`).join("");
+    </script>
+    <script>
+
+    let projects = [
+            {
+                name: "Term Project",
+                link:'https://yusufnadiruzun.github.io/yusuf-nadir-uzun/termProject/index.html'
+             },
+
+    ]   
+             links3.innerHTML += projects.map((link) => `<a href='${link.link}'><li> ${link.name}</li></a>`).join("");
     </script>
   
 
