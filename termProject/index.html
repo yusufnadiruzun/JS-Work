@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        .container{
+            text-align: center;
+            width: 450px;
+            height: 500px;
+            border: 4px;
+            border-style:groove;
+            margin-top: 70px;
+            margin-left: 40px;
+        }
+        input{
+            border: none;
+            border-bottom: 2px solid black;
+            width: 50%;
+            padding: 12px 30px;
+
+        }
+        .button{
+            background-color:  #e7e7e7; color: black;
+            margin-top: 70px;
+            width: 50px;
+            height: 30px;
+        }
+        
+        .select{
+            padding: 6px ;
+        }
+        .resultText{
+            text-align: left;
+            font-size: 30px;
+            padding: 5px 20px;
+        }
+        .resultValue{
+            width: 30px;
+            border: none;
+            border-bottom: 5px black ;
+            padding: 12px 30px; 
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div>
+                <p style="text-align: left; margin-left: 20px; font-size: 35px;">Currency App</p>
+            </div>
+            <div class="main">
+            <div class="select" >
+                <div style="text-align: left; " class="input">
+                     <input type="text"  name="" id="money" placeholder="Para Miktari">
+                </div>
+               <div style="margin-top: 5px; text-align: left;" class="select">
+
+                 <label for="cars"></label>
+
+                <select name="cars" id="cars">
+                    <option>EUR</option>
+                    <option>SGD</option>
+                    <option>THB</option>          
+                    <option>ZAR</option>
+                    </select>
+        
+               </div>
+               <div style="margin-top: 10px; text-align: left; " class="select" id="">
+
+                <label for="cars"></label>
+
+               <select name="cars" id="secondCurrency" onchange="">
+                <option>EUR</option>
+                <option>JPY</option>
+                <option>BGN</option>
+                <option>CZK</option>
+                <option>DKK</option>
+                <option>GBP</option>          
+                <option>HUF</option>
+                <option>PLN</option>
+                <option>RON</option>
+                <option>SEK</option>
+                <option>CHF</option>
+                <option>ISK</option>
+                <option>NOK</option>          
+                <option>HRK</option>
+                <option>RUB</option>
+                <option>TRY</option>
+                <option>AUD</option>
+                <option>BRL</option>          
+                <option>CAD</option>
+                <option>CNY</option>
+                <option>HKD</option>
+                <option>IDR</option>          
+                <option>ILS</option>
+                <option>INR</option>
+                <option>KRW</option>
+                <option>MXN</option>          
+                <option>MYR</option>
+                <option>NZD</option>
+                <option>PHP</option>
+                <option>SGD</option>
+                <option>THB</option>          
+                <option>ZAR</option>
+                   </select>
+       
+              </div>
+               
+
+            </div>
+        
+        
+       
+    </div>
+       
+        </div> 
+
+        <hr style="margin-top: 30px;">
+    <div>
+        <div>
+         <p class="resultText">EUR-</p>
+        </div>
+        <div>
+            <h1 class="resultValue"> 0.00</h1>
+        </div>
+    </div>
+
+    </div>
+
+    
+
+
+</body>
+<script src="app.js"></script>
+</html>
