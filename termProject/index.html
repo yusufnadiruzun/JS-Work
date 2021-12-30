@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <title>Currency App</title>
+    <title> Currency App</title>
     
     <style>
         .container{
@@ -65,11 +65,12 @@
 
                  <label for="cars"></label>
 
-                <select name="cars" id="cars">
+                <select name="cars" id="firstCurrency" onchange="writeCurreny()">
                     <option>EUR</option>
-                    <option>SGD</option>
-                    <option>THB</option>          
-                    <option>ZAR</option>
+                    <option>USD</option>
+                    <option>TRY</option>          
+                    <option>JPY</option>
+                    <option>GBP</option>
                     </select>
         
                </div>
@@ -77,39 +78,12 @@
 
                 <label for="cars"></label>
 
-               <select name="cars" id="secondCurrency" onchange="">
-                <option>EUR</option>
-                <option>JPY</option>
-                <option>BGN</option>
-                <option>CZK</option>
-                <option>DKK</option>
-                <option>GBP</option>          
-                <option>HUF</option>
-                <option>PLN</option>
-                <option>RON</option>
-                <option>SEK</option>
-                <option>CHF</option>
-                <option>ISK</option>
-                <option>NOK</option>          
-                <option>HRK</option>
-                <option>RUB</option>
-                <option>TRY</option>
-                <option>AUD</option>
-                <option>BRL</option>          
-                <option>CAD</option>
-                <option>CNY</option>
-                <option>HKD</option>
-                <option>IDR</option>          
-                <option>ILS</option>
-                <option>INR</option>
-                <option>KRW</option>
-                <option>MXN</option>          
-                <option>MYR</option>
-                <option>NZD</option>
-                <option>PHP</option>
-                <option>SGD</option>
-                <option>THB</option>          
-                <option>ZAR</option>
+               <select name="cars" id="secondCurrency" onchange="writeCurreny2()">
+                    <option>EUR</option>
+                    <option>USD</option>
+                    <option>TRY</option>          
+                    <option>JPY</option>
+                    <option>GBP</option>
                    </select>
        
               </div>
@@ -126,7 +100,7 @@
         <hr style="margin-top: 30px;">
     <div>
         <div>
-         <p class="resultText">EUR-</p>
+         <p class="resultText">EUR - EUR</p>
         </div>
         <div>
             <h1 class="resultValue"> 0.00</h1>
