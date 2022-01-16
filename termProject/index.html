@@ -1,54 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <title> Exchange Rate App </title>
-    
+    <title> Exchange Rate App</title>
+
     <style>
-        .container{
+        .container {
             text-align: center;
             width: 450px;
             height: 500px;
             border: 4px;
-            border-style:groove;
+            border-style: groove;
             margin-top: 70px;
             margin-left: 40px;
         }
-        input{
+
+        input {
             border: none;
             border-bottom: 2px solid black;
             width: 50%;
             padding: 12px 30px;
 
         }
-        .button{
-            background-color:  #e7e7e7; color: black;
+
+        .button {
+            background-color: #e7e7e7;
+            color: black;
             margin-top: 70px;
             width: 50px;
             height: 30px;
         }
-        
-        .select{
-            padding: 6px ;
+
+        .select {
+            padding: 6px;
         }
-        .resultText{
+
+        .resultText {
             text-align: left;
             font-size: 30px;
             padding: 5px 20px;
         }
-        .resultValue{
+
+        .resultValue {
             width: 30px;
             border: none;
-            border-bottom: 5px black ;
-            padding: 12px 30px; 
+            border-bottom: 5px black;
+            padding: 12px 30px;
         }
-        
+
+        .result {
+            display: flex;
+            justify-content: center;
+            
+        }
+     
 
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -57,61 +70,72 @@
                 <p style="text-align: left; margin-left: 20px; font-size: 35px;">Exchange Rate App</p>
             </div>
             <div class="main">
-            <div class="select" >
-                <div style="text-align: left; " class="input">
-                     <input type="text"  name="" id="money" placeholder="Para Miktari">
+                <div class="select">
+                    <div style="text-align: left; " class="input">
+                        <input type="text" name="" id="money" placeholder="Para Miktari">
+                    </div>
+                    <div style="margin-top: 5px; text-align: left;" class="select">
+
+                        <label for="cars"></label>
+
+                        <select name="cars" id="firstCurrency" onchange="writeCurreny()">
+                            <option>EUR</option>
+                            <option>USD</option>
+                            <option>TRY</option>
+                            <option>JPY</option>
+                            <option>GBP</option>
+                        </select>
+
+                    </div>
+                    <div style="margin-top: 10px; text-align: left; " class="select" id="">
+
+                        <label for="cars"></label>
+
+                        <select name="cars" id="secondCurrency" onchange="writeCurreny2name()">
+                            <option>EUR</option>
+                            <option>USD</option>
+                            <option>TRY</option>
+                            <option>JPY</option>
+                            <option>GBP</option>
+                        </select>
+
+                    </div>
+
+
                 </div>
-               <div style="margin-top: 5px; text-align: left;" class="select">
 
-                 <label for="cars"></label>
 
-                <select name="cars" id="firstCurrency" onchange="writeCurreny()">
-                    <option>EUR</option>
-                    <option>USD</option>
-                    <option>TRY</option>          
-                    <option>JPY</option>
-                    <option>GBP</option>
-                    </select>
-        
-               </div>
-               <div style="margin-top: 10px; text-align: left; " class="select" id="">
-
-                <label for="cars"></label>
-
-               <select name="cars" id="secondCurrency" onchange="writeCurreny2()">
-                    <option>EUR</option>
-                    <option>USD</option>
-                    <option>TRY</option>          
-                    <option>JPY</option>
-                    <option>GBP</option>
-                   </select>
-       
-              </div>
-               
 
             </div>
-        
-        
-       
-    </div>
-       
-        </div> 
+
+        </div>
 
         <hr style="margin-top: 30px;">
-    <div>
-        <div>
-         <p class="resultText">EUR - EUR</p>
+
+        <div class="result">
+
+            <div>
+                <h3 class="resultText">EUR - EUR</h3>
+            </div>
+
+            <div style="margin-top: 30px; " class="photo">
+                <img id="first" style="width: 40px; height: 40px;"
+                    src="https://ulkelerbayraklar.com/wp-content/uploads/2017/12/almanya_bayrag%CC%86%C4%B1-800x445.png"
+                    alt=""> ---> <img id="second" style="width: 40px; height: 40px;"
+                    src="https://ulkelerbayraklar.com/wp-content/uploads/2017/12/almanya_bayrag%CC%86%C4%B1-800x445.png"
+                    alt="">
+            </div>
         </div>
-        <div>
-            <h1 class="resultValue"> 0.00</h1>
+
+        <div style="margin-left: 140px;">
+            <h1 style="text-align: right;" class="resultValue"> 0.00</h1>
         </div>
     </div>
 
-    </div>
 
-    
 
 
 </body>
 <script src="app.js"></script>
+
 </html>
